@@ -33,3 +33,11 @@ class ProductPage(BasePage):
             *ProductPageLocators.INFO_COST).text, \
             "Имя книги некорректно"
 
+    def should_not_be_success_message(self):
+        assert self.is_not_element_present(*ProductPageLocators.ALERT_INFO_NAME), \
+            "Сообщение присутствует, но не должно"
+
+    def success_message_should_disappear(self):
+        assert self.is_disappeared(*ProductPageLocators.ALERT_INFO_NAME), \
+            "Сообщение не исчезло, но должно"
+
